@@ -1,39 +1,44 @@
 <?php
-    session_start();
-    error_reporting(E_ALL^E_NOTICE^E_DEPRECATED);
-    $conn = mysqli_connect('localhost','root','','dbperpus');
-    $Username = $_POST['Username'];
-    $Password = $_POST['Password'];
-    $submit = $_POST['submit'];
-    if($submit){
-        $sql = "SELECT * FROM user WHERE Username='$Username' AND Password='$Password'";
-        $query = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_array($query);
-        if($row['Username']!=""){
-            //berhasil login
-            $_SESSION['Username']=$row['Username'];
-            $_SESSION['status']=$row['Status'];
-            ?>
-            <script language script="JavaScript">
-            alert('Anda Login Sebagai <?php echo $row['Username']; ?>');
-            document.location='hasillogin.php';
-            </script>
-            <?php
-        }else{
-            //gagal login
-            ?>
-            <script language script="JavaScript">
-                alert('Gagal Login');
-                document.location='login.php';
-            </script>
-            <?php
-        }
+session_start();
+$conn = mysqli_connect('localhost', 'root', '', 'dbperpus');
+
+if (isset($_POST['submit'])) {
+    $email = isset($_POST['email']) ? $_POST['email'] : '';
+    $password = isset($_POST['password']) ? $_POST['password'] : '';
+
+    $sql = "SELECT * FROM user WHERE email='$email' AND password='$password'";
+    $query = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($query);
+
+    if ($row && isset($row['email']) && $row['email'] != "") {
+        // Successful login
+        $_SESSION['email'] = $row['email'];
+        $_SESSION['status'] = $row['Status'];
+        header("Location: main-page.php");
+        exit();
+    } else {
+        // Failed login
+        $error = "Invalid email or password";
     }
+}
 ?>
-<form method='post' action='login.php'>
-    <p align='center'>
-        Username : <input type='text' name='Username'><br>
-        Password : <input type='Password' name='Password'><br>
-        <input type='submit' name='submit'>
-    </p>
-</form>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+</head>
+<body>
+    <h1>Login Page</h1>
+    <?php if (isset($error)) { ?>
+        <p><?php echo $error; ?></p>
+    <?php } ?>
+    <form method="post" action="login.php">
+        <p>
+            email: <input type="text" name="email"><br>
+            password: <input type="password" name="password"><br>
+            <input type="submit" name="submit" value="Login">
+        </p>
+    </form>
+</body>
+</html>
