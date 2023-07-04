@@ -14,6 +14,7 @@ if (isset($_POST['submit'])) {
         // Successful login
         $_SESSION['email'] = $row['email'];
         $_SESSION['status'] = $row['Status'];
+        $_SESSION['user_id'] = $row['id']; // Add this line to store the user ID in the session
         header("Location: main-page.php");
         exit();
     } else {
@@ -39,6 +40,9 @@ if (isset($_POST['submit'])) {
             password: <input type="password" name="password"><br>
             <input type="submit" name="submit" value="Login">
         </p>
+        <div class="register">
+            <p>Belum punya akun? Daftar sekarang <a href="register.php">di sini</a></p>
+        </div>
     </form>
 </body>
 </html>

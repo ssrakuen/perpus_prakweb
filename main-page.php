@@ -12,21 +12,13 @@ function isBookInCart($bookId) {
 }
 
 // Add a book to the cart
-function addToCart($bookId) {
+function addToCart($bookId, $conn) {
     if (!isBookInCart($bookId)) {
         $_SESSION['cart'][] = $bookId;
-        $userId = 1;
+        $userId = $_SESSION['user_id']; // Use the user ID from the session
         $date = date('Y-m-d');
         $insertQuery = "INSERT INTO pinjam (tanggal, id_buku, id_user) VALUES ('$date', '$bookId', '$userId')";
         mysqli_query($conn, $insertQuery);
-    }
-}
-
-// Remove a book from the cart
-function removeFromCart($bookId) {
-    $index = array_search($bookId, $_SESSION['cart']);
-    if ($index !== false) {
-        array_splice($_SESSION['cart'], $index, 1);
     }
 }
 
@@ -49,7 +41,7 @@ $result = mysqli_query($conn, $query);
 if (isset($_POST['add_to_cart'])) {
     if (isset($_POST['book_id'])) {
         $bookId = $_POST['book_id'];
-        addToCart($bookId);
+        addToCart($bookId, $conn); // Pass the $conn variable to the function
         header("Location: main-page.php");
         exit();
     }
@@ -84,7 +76,7 @@ mysqli_close($conn);
             while ($row = mysqli_fetch_assoc($result)) {
                 echo '<div class="item">';
                 echo '<h2>' . $row['judul'] . '</h2>';
-                echo '<img src="' . $row['cover'] . '" alt="Girl in a jacket" width="250" height="300">';
+                echo '<img src="' . $row['cover'] . '" alt="Book cover" width="250" height="300">';
                 echo '<p>' . $row['sinopsis'] . '</p>';
                 echo '<form method="POST" action="main-page.php">';
                 echo '<input type="hidden" name="book_id" value="' . $row['id'] . '">';
@@ -93,12 +85,14 @@ mysqli_close($conn);
                 } else {
                     echo '<button type="submit" name="add_to_cart">Add to Cart</button>';
                 }
+                
                 echo '</form>';
                 echo '</div>';
             }
-            // Cart button
-            echo '<a href="cart.php">Go to Cart</a>';
         ?>
+    </div>
+    <div class="cart">
+        <a href="cart.php">Go to Cart</a>
     </div>
     <div class="logout">
         <a href="logout.php">Logout</a>

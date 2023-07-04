@@ -5,7 +5,15 @@ session_start();
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = array();
 }
+$host = 'localhost';
+$username = 'root';
+$password = '';
+$database = 'dbperpus';
 
+$conn = mysqli_connect($host, $username, $password, $database);
+if (!$conn) {
+    die('Failed to connect to the database: ' . mysqli_connect_error());
+}
 // Function to retrieve book details from the database based on book IDs
 function getBooksFromCart($bookIds) {
     // Connect to the database
@@ -46,6 +54,10 @@ if (isset($_POST['remove_from_cart']) && isset($_POST['book_id'])) {
     $bookId = $_POST['book_id'];
     if (($key = array_search($bookId, $_SESSION['cart'])) !== false) {
         unset($_SESSION['cart'][$key]);
+
+        // Delete the book from the pinjam table
+        $deleteQuery = "DELETE FROM pinjam WHERE id_buku = '$bookId'";
+        mysqli_query($conn, $deleteQuery);
     }
 }
 
