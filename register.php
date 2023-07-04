@@ -1,16 +1,19 @@
 <?php
 session_start();
-error_reporting(E_ALL ^ E_NOTICE ^ E_DEPRECATED);
 $conn = mysqli_connect('localhost', 'root', '', 'dbperpus');
-$email = $_POST['email'];
-$password = $_POST['password'];
-$nama_lengkap = $_POST['nama_lengkap'];
-$prodi = $_POST['prodi'];
-$submit = $_POST['submit'];
-if ($submit) {
+
+
+if (isset($_POST['submit'])) {
+  $email = isset($_POST['email']) ? $_POST['email'] : '';
+  $password = isset($_POST['password']) ? $_POST['password'] : '';
+  $nama_lengkap = isset($_POST['nama_lengkap']) ? $_POST['nama_lengkap'] : '';
+  $prodi = isset($_POST['prodi']) ? $_POST['prodi'] : '';
+
+
   $sql = "SELECT * FROM user WHERE email='$email'";
   $query = mysqli_query($conn, $sql);
   $row = mysqli_fetch_array($query);
+
   if ($row['email'] != "") {
     //email ditemukan
     ?>
@@ -19,9 +22,10 @@ if ($submit) {
       document.location = 'register.php';
     </script>
     <?php
-  } elseif ($row['email'] = "") {
+  } elseif ($row['email'] == "") {
     //gagal login
-    $sql = "INSERT INTO user(email, password, nama, prodi) VALUES ('$email','$password','$nama_lengkap,'$prodi')";
+    $sql = "INSERT INTO user (email, password, nama, prodi) VALUES ('$email','$password','$nama_lengkap','$prodi')";
+    $query = mysqli_query($conn, $sql);
     $_SESSION['email'] = $row['email'];
     $_SESSION['status'] = $row['Status'];
     ?>
@@ -33,7 +37,7 @@ if ($submit) {
   } else {
     ?>
     <script language script="JavaScript">
-      alert('register gagal');
+      alert('Register gagal');
       document.location = 'register.php';
     </script>
     <?php
@@ -43,7 +47,7 @@ if ($submit) {
 <form method='post' action='register.php'>
   <p align='center'>
     Email <input type='text' name='email'><br>
-    Password <input type='text' name='password'><br>
+    Password <input type='password' name='password'><br>
     Nama Lengkap <input type='text' name='nama_lengkap'><br>
     Prodi <input type='text' name='prodi'><br>
     <input type='submit' name='submit'>
