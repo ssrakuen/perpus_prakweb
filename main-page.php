@@ -15,6 +15,10 @@ function isBookInCart($bookId) {
 function addToCart($bookId) {
     if (!isBookInCart($bookId)) {
         $_SESSION['cart'][] = $bookId;
+        $userId = 1;
+        $date = date('Y-m-d');
+        $insertQuery = "INSERT INTO pinjam (tanggal, id_buku, id_user) VALUES ('$date', '$bookId', '$userId')";
+        mysqli_query($conn, $insertQuery);
     }
 }
 

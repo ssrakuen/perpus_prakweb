@@ -83,5 +83,8 @@ $booksInCart = getBooksFromCart($_SESSION['cart']);
         }
         ?>
     </div>
+    <div class="back">
+        <a href="main-page.php">Back to main page</a>
+    </div>
 </body>
 </html>
