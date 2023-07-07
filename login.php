@@ -28,21 +28,28 @@ if (isset($_POST['submit'])) {
 <html>
 <head>
     <title>Login Page</title>
+    <link rel="stylesheet" href="./style/login.css">
 </head>
 <body>
-    <h1>Login Page</h1>
     <?php if (isset($error)) { ?>
         <p><?php echo $error; ?></p>
     <?php } ?>
-    <form method="post" action="login.php">
-        <p>
-            email: <input type="text" name="email"><br>
-            password: <input type="password" name="password"><br>
-            <input type="submit" name="submit" value="Login">
-        </p>
-        <div class="register">
+    <div class="login-container">
+        <form method="post" action="login.php">
+            <h1>Login</h1>
+            <div class="login-input">
+                <label for="email">Email:</label>
+                <input type="text" name="email" id="email">
+            </div>
+            <div class="login-input">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <button type="submit" name="submit">Login</button>
+        </form>
+        <div class="atau">
             <p>Belum punya akun? Daftar sekarang <a href="register.php">di sini</a></p>
         </div>
-    </form>
+    </div>
 </body>
 </html>

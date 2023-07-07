@@ -1,0 +1,35 @@
+/* book-detail.css */
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .book-details {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .book-cover img {
+    width: 300px;
+    height: auto;
+  }
+  
+  .book-info {
+    margin-left: 20px;
+  }
+  
+  .book-info h1 {
+    margin-top: 0;
+  }
+  
+  .synopsis h2 {
+    margin-top: 0;
+  }
+  
+  p {
+    margin: 5px 0;
+  }
+  
