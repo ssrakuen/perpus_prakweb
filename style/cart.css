@@ -29,7 +29,7 @@ h1, h2, p {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
-    margin: 0 auto; /* Center the item container */
+    margin: 0 3rem 3rem 3rem; /* Center the item container */
     max-width: 960px; /* Limit the width of the item container */
 }
 
@@ -73,6 +73,7 @@ button:disabled {
 
 .back {
     margin-top: 3rem;
+    margin-bottom: 3rem;
     text-align: center;
 }
 

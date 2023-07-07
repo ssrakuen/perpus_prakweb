@@ -73,7 +73,7 @@ mysqli_close($conn);
     <div class="navbar">
         <div class="brand">
             <a href="main-page.php">
-                <h1>SukaBaca Perpustakaan</h1>
+                <h1>ApaBenar Perpustakaan</h1>
             </a>
         </div>
         <div class="links">
