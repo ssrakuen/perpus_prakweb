@@ -39,7 +39,6 @@ function getBooksFromCart($bookIds, $conn) {
     while ($row = mysqli_fetch_assoc($result)) {
         $books[] = $row;
     }
-
     return $books;
 }
 
