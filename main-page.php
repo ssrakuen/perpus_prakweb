@@ -3,7 +3,7 @@ session_start();
 
 if (!isset($_SESSION['user_id'])) {
     // Redirect to the login page or perform any other action
-    header("Location: login.php");
+    header("Location: index.php");
     exit(); // Make sure to exit after redirecting
 }
 

@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
         <p><?php echo $error; ?></p>
     <?php } ?>
     <div class="login-container">
-        <form method="post" action="login.php">
+        <form method="post" action="index.php">
             <h1>Login</h1>
             <div class="login-input">
                 <label for="email">Email:</label>

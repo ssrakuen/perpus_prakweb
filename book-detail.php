@@ -3,17 +3,19 @@ session_start();
 
 if (!isset($_SESSION['user_id'])) {
     // Redirect to the login page or perform any other action
-    header("Location: login.php");
+    header("Location: index.php");
     exit(); // Make sure to exit after redirecting
 }
 ?>
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Book Detail</title>
     <link rel="stylesheet" href="./style/book-detail.css">
 </head>
+
 <body>
     <div class="container">
         <?php
@@ -66,4 +68,5 @@ if (!isset($_SESSION['user_id'])) {
         ?>
     </div>
 </body>
+
 </html>

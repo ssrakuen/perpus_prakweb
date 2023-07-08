@@ -72,7 +72,7 @@ if (isset($_POST['submit'])) {
             </div>
             <button type="submit" name="submit">Register</button>
         </form>
-      <p>Sudah punya akun? Silakan <a href="login.php">login</a></p>
+      <p>Sudah punya akun? Silakan <a href="index.php">login</a></p>
     </div>
 </body>
 </html>
