@@ -77,6 +77,9 @@ mysqli_close($conn);
             </a>
         </div>
         <div class="links">
+            <div class="profile">
+                <a href="profile.php">Profile</a>
+            </div>
             <div class="cart">
                 <a href="cart.php">Go to Cart</a>
             </div>

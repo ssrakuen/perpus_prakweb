@@ -1,0 +1,108 @@
+/* profile.css */
+
+/* Global Styles */
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #424242;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    margin-top: 10px;
+    color: #424242;
+    font-weight: bold;
+}
+
+input {
+    width: 300px;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #333;
+}
+
+.navbar {
+    background-color: #333;
+    padding: 10px;
+}
+
+.brand {
+    margin-right: auto;
+}
+
+.brand h1 {
+    color: white;
+    font-size: 20px;
+}
+
+a { color: white; }
+
+a:link { text-decoration: none; }
+
+
+a:visited { text-decoration: none; }
+
+
+a:hover { text-decoration: none; }
+
+
+a:active { text-decoration: none; }
+
+
+.links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.links a {
+    margin-left: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.profile a {
+    color: white;
+    text-decoration: none;
+}
+
+.logout a {
+    color: white;
+    text-decoration: none;
+}
+
+.logout a:hover {
+    text-decoration: underline;
+}
